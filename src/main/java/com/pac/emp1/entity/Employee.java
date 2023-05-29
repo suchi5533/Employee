@@ -12,10 +12,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Document(collection = "employee")
+@Document(collection = "employee1")
 public class Employee {
-//@Id
-//private String id;
+@Id
+private String eid;
 private String name;
 private String email;
 private String designation;

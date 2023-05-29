@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/employees")
+@RequestMapping("home")
 public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
@@ -47,8 +47,7 @@ public class EmployeeController {
          Employee createdEmployee=employeeService.createEmployee(employee);
          if(createdEmployee != null && createdEmployee.getDesignation() != null) {
              // or
-             // return employeeRe
-             // pository.save(employee);
+             // return employeeRepository.save(employee);
              return ResponseEntity.status(HttpStatus.CREATED).body(createdEmployee);
          }
          else {
@@ -63,7 +62,7 @@ public class EmployeeController {
        // return employeeService.updateEmployee(id, updatedEmployee);
         // or
          Employee existingEmployee = employeeRepository.findById(id).orElse(null);
-         if (existingEmployee != null) {
+         if (existingEmployee != null && updatedEmployee.getDesignation()!=null) {
         //     // Update the existingEmployee with the properties from updatedEmployee
             existingEmployee.setName(updatedEmployee.getName());
             existingEmployee.setEmail(updatedEmployee.getEmail());
